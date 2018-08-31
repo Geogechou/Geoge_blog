@@ -176,12 +176,13 @@ subType继承了SuperType,而继承是通过创建SuperType的实例，并将实
 ### 寄生组合式继承  
 基本思路：不必为指定类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本  
 寄生组合式继承的基本模式如下:  
-######  
-    function inheritprototype(subType,superType){
-      var prototype=Object(superType.prototype);
-      prototype.constructor=SubType;
-      subType.prototype=prototype;
-    }
+######
+     
+          function inheritprototype(subType,superType){
+          var prototype=Object(superType.prototype);
+          prototype.constructor=SubType;
+          subType.prototype=prototype;
+          }
 
 ######  
         function SuperType(name){
