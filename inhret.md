@@ -170,12 +170,13 @@ subType继承了SuperType,而继承是通过创建SuperType的实例，并将实
     SubType.prototype.sayAge=function(){
       alert(this.age);
     }
-<li>1.在第一次调用SuperType构造函数时，SubType构造函数时，SubType.prototype会得到两个属性，name和color，它们都是SuperType的实例属性，只不过现在位于SubType的原型中。  
-<li>2.当调用SubType构造函数时，又会调用一次SuperType的构造函数，这一次又在新对象上创建了实例属性name和colors，于是，实例属性就屏蔽了原型中的同名属性    
-<li>有两组name和color属性，一组在实例上，一组在SubType的原型中
+<li>1.在第一次调用SuperType构造函数时，SubType构造函数时，SubType.prototype会得到两个属性，name和color，它们都是SuperType的实例属性，只不过现在位于SubType的原型中。</li>  
+<li>2.当调用SubType构造函数时，又会调用一次SuperType的构造函数，这一次又在新对象上创建了实例属性name和colors，于是，实例属性就屏蔽了原型中的同名属性</li>    
+<li>有两组name和color属性，一组在实例上，一组在SubType的原型中</li>  
+
 ###  寄生组合式继承  
 基本思路：不必为指定类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型原型的一个副本  
-寄生组合式继承的基本模式如下:  
+寄生组合式继承的基本模式如下:
 ######
           function inheritprototype(subType,superType){
           var prototype=Object(superType.prototype);
