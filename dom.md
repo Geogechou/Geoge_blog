@@ -172,6 +172,7 @@ hasChildNodes()也是一个非常有用的方法，这个方法在节点包含�
     }
     </script>
   </body>
+  
 *<font size="5">removeChild()方法</font>*   
 只想移除节点而非替换节点，可以使用removeChild()方法，接受一个参数，即要移除的节点。e.g.   
 
