@@ -1,0 +1,70 @@
+## 跨文档消息传送
+跨文档消息传递(cross-document messaging)，有时候简称为XDM，指的是在不同域的页面间传递消息。  
+XDM的核心是<strong>postMessage()方法</Strong>  
+该方法是向另一个地方传递数据，另一个地方指的是包含在当前页面中`<iframe>`元素，或者由当前页面弹出的窗口。  
+该方法接受两个参数
+<li>1.一条消息  
+<li>2.表示消息接收方来自哪个域的字符串(如果第二个参数是" * ",则表示可以把消息发送给来自任何域的文本)  
+
+    win.postMessage("A secret", "http://localhost/");
+    该代码，向一个新的窗口发送一条信息，内容是"A secret"，并指定框架中文档必须来源于"http://localhost"域
+    如果来源匹配成功，则会传递到内嵌框架。否则，postMessage()什么都不做。
+接受到XDM消息后，会触发window对象的message事件。触发message事件后，传递给onmessage处理程序的事件对象包含以下三方面的重要信息。  
+<li>data:作为postMessage()第一个参数传入的字符串数据
+<li>origin:发送消息的文档所在的域，例如"http://www.wrox.com"
+<li>source: 发送消息文档的window对象的代理  
+下面代码是HTMLPage1的代码，发送窗口的代码
+
+    <!DOCTYPE html>
+    <html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta charset="utf-8" />
+    <title></title>
+    </head>
+    <body>
+    <button id="open">弹窗</button>
+    <button id="send">传输信息</button>
+    <script>
+        var win;
+        document.querySelector("#open").addEventListener("click", function () {
+            //打开新窗口
+            win = window.open("demo1.html","","left=10;top=10");
+        }
+        );
+        document.querySelector("#send").addEventListener("click", function () {
+            //向新窗口发送一条信息，信息内容是"A secret"
+            win.postMessage("A secret", "http://localhost/");
+        });
+        window.onmessage = function (e) {
+            //接受到新窗口发回来的信息，并记录到控制台中
+            console.log(e.data);
+        }
+
+    </script>
+    </body>
+    </html>
+
+以下是接受窗口demo的代码
+
+    <!DOCTYPE html>    
+    <html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            window.onmessage = function (e) {
+                //接受到HTMLPage1发送的信息，记录下data,orign,source
+                document.write(e.data+ "<br/>");
+                document.write(e.origin + "<br/>");
+                if (e.origin == "http://localhost")
+                    document.write(e.source + "<br/>");
+                //想HTMLPage1发送一条信息，内容是"received"
+                e.source.postMessage("Received!", "http://localhost");
+            };
+        </script>
+    </body>
+    </html>
+传递完信息，两个窗口的信息显示      
+![5Hdghq.png](https://s1.ax2x.com/2018/09/23/5Hdghq.png)    
