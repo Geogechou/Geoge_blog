@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Rich Text</title>
+    <style>
+        #container {
+            margin: 0 auto;
+            width: 400px;
+            border: 1px solid #0099CC;
+        }
+        .editable {
+            width: 400px;
+            height: 400px;
+       
+        }
+        #controlbar {
+            display: inline-block;
+            height: 30px;
+            width: 400px;
+            background-color: aliceblue;
+        }
+        #controlbar img {
+            width: 30px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="controlbar">
+            <img src="字号-加.png" id="fontplus" />
+            <img src="字号-减.png" id="fontsub" />
+            <img src="斜体.png" id="italic" style="width:20px;" />
+            <img src="下划线.png" id="underline" />
+            <input type="color" id="colorselect" style="display:none" />
+            <label for="colorselect"><img src="字体颜色.png"></label>
+            <input  type="color" id="backcolor"  style="display:none;"/>
+            <label for="backcolor"><img src="背景颜色.png"></label>
+        </div>
+        <div class="editable" id="richedit" contenteditable></div>
+    </div>
+
+    <script>
+        var controlbar = document.getElementById("controlbar");
+        controlbar.addEventListener("click", function (event) {
+            var id = event.target.id;
+            switch (id) {
+                case "fontplus":
+                    var fontsize = document.queryCommandValue("fontsize");
+                    fontsize = parseInt(fontsize) + 1;
+                    document.execCommand("fontsize", false,fontsize);
+                    break;
+                case "fontsub":
+                    var fontsize = document.queryCommandValue("fontsize");
+                    fontsize = parseInt(fontsize) - 1;
+                    document.execCommand("fontsize", false, fontsize);
+                    break;
+                case "italic":
+                    document.execCommand("italic", false, null);
+                    break;
+                case "underline":
+                    document.execCommand("underline", false, null);
+                    break;
+            }
+
+        });
+        document.getElementById("colorselect").addEventListener("change", function (e) {
+            document.execCommand("forecolor", false, e.target.value);
+        });
+        document.getElementById("backcolor").addEventListener("change", function (e) {
+            document.execCommand("backcolor", false, e.target.value);
+        });
+    </script>
+</body>
+</html>
+
