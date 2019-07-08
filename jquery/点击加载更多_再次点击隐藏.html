@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+            div.row div{
+                height:40px;
+                font-size: 15px;
+            }
+            .showmore{
+                background-color: bisque;
+                border:1px solid black;;
+                width:150px;
+            }
+    </style>
+        <script src="jquery-3.3.1.js"></script>    
+</head>
+    <body>
+       <div class="SubCategoryBox container">
+           <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">佳能</a> </div>  
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">索尼</a> </div>   
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"><a href="#">三星</a></div>  
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">尼康</a> </div>  
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">松下</a> </div>   
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"><a href="#">卡西欧</a></div>
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">富士</a> </div>  
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">柯达</a> </div>   
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"><a href="#">宾得</a></div>      
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">明基</a> </div>  
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"> <a href="#">爱国者</a> </div>   
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6"><a href="#">其他</a></div>   
+           </div>      
+           <div class="showmore"><span>显示全部品牌</span></div>    
+       </div>
+    </body>
+    <script>
+            //选中第6个后的元素，并且不包括最后一个
+           var $category=$("div.row div:gt(5):not(:last)");
+            $category.hide();
+           var $dispSwitch=$(".showmore");
+           $dispSwitch.click(function(){
+               
+               if($category.is(":visible")){
+                   $category.hide();
+                  $(this).text("展示全部");
+               }
+               else{
+                   $category.show();
+                   $(this).text("展示精简");
+               }
+              
+           })
+    </script>
+ 
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</html>
