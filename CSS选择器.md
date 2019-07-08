@@ -1,13 +1,17 @@
-## 通配选择器
+### 通配选择器
+```
     *{
-
+    
     }
+```
 描述：以文档的所有元素作为选择符    
-## jquery操作css
+### jquery操作css
+```js
     $(".btn").click(function(){
         $(this).css("color","red");
     })
-## 层次选择器
+```
+### 层次选择器
 <table>
     <tr><td>选择器</td><td>描述</td><td>实例</td></tr>
     <tr><td>$("ancestor descendant")</td><td>选择ancestor元素里所有descendant后代元素</td><td>$("div span")选取div里所有span元素</td></tr>
@@ -16,7 +20,7 @@
     <tr><td>$("prev~siblings")</td><td>选取prev元素之后的所有siblings元素</td><td>$("#two~div")选取id为two元素后面所有div同辈元素</td></tr>
 </table>
 
-## 基本过滤器
+###  基本过滤器
 <table>
 <tr><td>选择器</td><td>描述</td><td>实例</td></tr>
 <tr><td>:first</td><td>选取第1个元素</td><td>$("div:first")选取所有div元素中第1个Div元素</td></tr>
@@ -32,7 +36,7 @@
 <tr><td>:focus</td><td>选取当前获得焦点的元素</td><td>$(":focus")选取当前获得焦点的元素</td></tr>
 </table>
 
-## 内容过滤器
+### 内容过滤器
 <table>
 <tr><td>选择器</td><td>描述</td><td>实例</td></tr>
 <tr><td>:contains(text)</td><td>选择含有文本内容为"text"的元素</td><td>$("div:contains('我')")选取含有文本"我"的div元素</td></tr>
@@ -41,14 +45,14 @@
 <tr><td>:parent</td><td>选择含有子元素或文本元素</td><td>$("div:parent")选取拥有子元素(包含文本元素)的div元素</td></tr>
 </table>
 
-## 可见性过滤器
+### 可见性过滤器
 <table>
 <tr><td>:hidden</td><td>选取所有不可见的元素</td><td>$("div:hidden")选取所有不可见的元素</td></tr>
 <tr><td>:visible</td><td>选取所有可见的元素</td><td>$("div:visible")</td></tr>
 </table>
 
-## 属性过滤器
-   
+### 属性过滤器
+
 <table>
 <tr><td>[attribute]</td><td>选择拥有此属性的元素</td><td>$("div[id]")选择拥有属性id的元素</td></tr>
 <tr><td>[attribute=value]</td><td>选择属性为value的元素</td><td>$("div[title=test]")选择属性title为test的div元素</td></tr>
@@ -61,7 +65,7 @@
 <tr><td>[attribute1][attribute2][attributeN]</td><td>用属性选择器合并成一个符合属性选择器，满足多个条件</td><td>$("div[id][title$='test']")选取拥有属性id并且属性title以test为结束的div元素</td></tr>
 </table>
 
-## 子元素过滤选择器
+### 子元素过滤选择器
     nth-child()索引从1开始，
 **$(.one :nth-child(1)),注意的是:与之前有一个空格间隔。**  
 
@@ -73,7 +77,7 @@
 <tr><td> :only-child</td><td>如果父元素下有唯一的元素会被匹配</td><td></td></tr>
 </table>
 
-## 表单选择器
+### 表单选择器
 <table>
     <tr><td>:checked</td><td>选中所有被选中的元素</td><td>$("input:checked")</td></tr>
     <tr><td>:selected</td><td>选中所有被选中的选项元素</td><td>$("input:selected")</td></tr>

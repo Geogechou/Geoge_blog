@@ -14,10 +14,10 @@
     var myDiv=document.querySelector("#myDiv");
     //设置背景颜色
     myDiv.style.backgroundColor="red";
-
+    
     //设置大小
     myDiv.style.width="100px";
-
+    
     //指定边框
     myDiv.style.border="1px solid black";
 在以这种方式改变样式时，元素的外观会自动更新  
@@ -36,7 +36,6 @@
       var value = temp.style.getPropertyValue(prop);
       console.log(prop+" "+value);
     }
-![5FyRHY.png](https://s1.ax2x.com/2018/09/13/5FyRHY.png)  
 ### removeProperty()方法
 从元素的样式中移除某个css属性  
 
